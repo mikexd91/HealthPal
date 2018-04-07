@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">HealthPal</string>
+    <string name="title_home">Chat</string>
+    <string name="title_dashboard">Map</string>
+    <string name="title_notifications">Profile</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="auth_failed">authentication failed</string>
+    <string name="login_activity_title">Login</string>
+    <string name="signup_activity_title">Register</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_no_password">Please enter a password</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_sign_up">Sign Up</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

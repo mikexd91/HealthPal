@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "206499809278",
+    "firebase_url": "https://healthpal-4466f.firebaseio.com",
+    "project_id": "healthpal-4466f",
+    "storage_bucket": "healthpal-4466f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:206499809278:android:63745590ece41fa5",
+        "android_client_info": {
+          "package_name": "com.mikexd.healthpal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "206499809278-g6sskc3b0802fgm38tnaj6r2cl04of1p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.mikexd.healthpal",
+            "certificate_hash": "4a9c2b46330bdea733942b4bb7ef7b1b962ed48e"
+          }
+        },
+        {
+          "client_id": "206499809278-85905efn02i9ud31th86ngfviqo88i7f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCFLE_Dtdg_AU90KOv6aaNX2_kSeG3xd5U"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "206499809278-85905efn02i9ud31th86ngfviqo88i7f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
