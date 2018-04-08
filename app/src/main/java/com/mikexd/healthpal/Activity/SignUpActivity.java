@@ -19,16 +19,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -77,16 +74,6 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
         mEmailView = (AutoCompleteTextView) findViewById(R.id.editTextEmail);
         populateAutoComplete();
         mPasswordView = (EditText) findViewById(R.id.editTextPassword);
-        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
-                if (id == R.id.login || id == EditorInfo.IME_NULL) {
-                    attemptLogin();
-                    return true;
-                }
-                return false;
-            }
-        });
         Button mEmailSignInButton = (Button) findViewById(R.id.buttonSignin);
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
@@ -99,7 +86,7 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
         mEmailSignInButton2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-                onClick_SignIn();
+                finish();
             }
         });
         mProgressView = findViewById(R.id.login_progress);

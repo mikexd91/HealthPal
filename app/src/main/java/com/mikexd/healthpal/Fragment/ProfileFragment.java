@@ -225,7 +225,7 @@ public class ProfileFragment extends Fragment implements GoogleApiClient.Connect
     @Override
     public void onSensorChanged(SensorEvent event) {
         if(running){
-            int stepToAdd = Integer.valueOf((int)event.values[0]);
+            int stepToAdd = 1;
             // get shared pref steps
             SharedPreferences editors = getActivity().getSharedPreferences(MY_SHAREDPREF_NAME1,MODE_PRIVATE);
             int daySteps = Integer.valueOf(editors.getString("dayStep","0"));

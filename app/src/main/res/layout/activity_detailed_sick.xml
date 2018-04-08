@@ -1,77 +1,183 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/gray_light"
     android:orientation="vertical"
-    tools:context="com.mikexd.healthpal.Activity.DetailedSickActivity">
+    tools:context="com.mikexd.healthpal.Fragment.ProfileFragment">
 
-    <TextView
-        android:text="Name"
-        android:textSize="20sp"
-        android:textAllCaps="true"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-    <TextView
-        android:text="Description"
-        android:textSize="20sp"
-        android:textAllCaps="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/descriotion"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <ProgressBar
+                    android:id="@+id/progress"
+                    style="@style/Widget.AppCompat.ProgressBar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:indeterminate="true"
+                    android:visibility="visible" />
 
-    <TextView
-        android:text="Medical Condition"
-        android:textSize="20sp"
-        android:textAllCaps="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/condition"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:background="@drawable/gradientbackground"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-    <TextView
-        android:text="Possible Symptoms"
-        android:textSize="20sp"
-        android:textAllCaps="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/symptoms"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+                    <TextView
+                        android:paddingTop="20dp"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="30sp"
+                        android:textStyle="bold"
+                        android:textColor="#ffff"
+                        android:id="@+id/name"
+                        android:text="Name"
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/descriotion"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#fff"
+                        android:padding="20dp"
+                        android:text="description..................."
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="25sp"
+                        android:textStyle="bold"
+                        android:textColor="@color/black"
+                        android:text="Medical Condition"
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:id="@+id/condition"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:padding="20dp"
+                        android:textColor="@color/gray_dark"
+                        android:text="description..................."
+                        android:layout_marginTop="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+            </android.support.v7.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="360dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center"
+                android:layout_marginTop="30dp">
+                <LinearLayout
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:paddingLeft="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:tint="@color/colorAccent"
+                        android:src="@drawable/ic_info_black_24dp"/>
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:paddingLeft="10dp"
+                        android:text="Possible Symptoms"/>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="40dp"
+                    android:textStyle="bold"
+                    android:id="@+id/symptoms"
+                    android:textColor="@color/gray_dark"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Symptoms"/>
 
 
-    <TextView
-        android:text="Treatment"
-        android:textSize="20sp"
-        android:textAllCaps="true"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-    <TextView
-        android:id="@+id/treatment"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+                <LinearLayout
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="20dp"
+                    android:paddingLeft="40dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:tint="@color/colorAccent"
+                        android:src="@drawable/ic_info_black_24dp"/>
+                    <TextView
+                        android:textStyle="bold"
+                        android:layout_gravity="center_vertical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="18dp"
+                        android:paddingLeft="10dp"
+                        android:text="Treatment"/>
+                </LinearLayout>
 
-    <ProgressBar
-        android:id="@+id/progress"
-        style="@style/Widget.AppCompat.ProgressBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:foregroundGravity="center"
-        android:indeterminate="true"
-        android:visibility="visible"
-        tools:visibility="gone" />
+                <TextView
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="40dp"
+                    android:textStyle="bold"
+                    android:id="@+id/treatment"
+                    android:textColor="@color/gray_dark"
+                    android:layout_gravity="center_vertical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="30dp"
+                    android:text="Symptoms"/>
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </LinearLayout>

@@ -2,6 +2,7 @@ package com.mikexd.healthpal.Utilities;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -10,11 +11,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.github.lzyzsd.randomcolor.RandomColor;
 import com.mikexd.healthpal.Activity.DetailedSickActivity;
 import com.mikexd.healthpal.Data.Sickness;
 import com.mikexd.healthpal.R;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  * Created by xunda on 7/4/18.
@@ -51,17 +56,31 @@ public class MasonryAdapter extends RecyclerView.Adapter<MasonryAdapter.MasonryV
     class MasonryView extends RecyclerView.ViewHolder implements View.OnClickListener{
         ImageView imageView;
         TextView textView;
+        CardView cardView;
         Sickness sick;
 
         public MasonryView(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             textView = (TextView) itemView.findViewById(R.id.text);
+            cardView = (CardView) itemView.findViewById(R.id.cardView);
         }
 
         public void setCell(Sickness sick){
             this.sick = sick;
             textView.setText(sick.getIssue());
+            randomColor();
+        }
+
+        public void randomColor(){
+            RandomColor randomColor = new RandomColor();
+//            int color = randomColor.randomColor();
+            int[] color = randomColor.random(RandomColor.Color.PINK, 18);
+            int[] colorz = randomColor.random(RandomColor.Color.ORANGE, 18);
+            int[] both = (int[]) ArrayUtils.addAll(color, colorz);
+            Random rand = new Random();
+            int  n = rand.nextInt(35) + 0;
+            cardView.setCardBackgroundColor(both[n]);
         }
 
         @Override
