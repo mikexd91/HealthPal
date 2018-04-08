@@ -18,7 +18,7 @@
         android:elevation="5dp"
         android:layout_margin="10dp"
         android:textColor="@android:color/white"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/buttonstyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -28,7 +28,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:elevation="5dp"
+        android:textColor="@color/colorAccent"
         android:minHeight="200dp"
+        android:backgroundTint="@color/gray_light"
+        android:background="@drawable/buttonstyle"
         android:text="HealthPal"
         android:textAllCaps="false"
         android:textSize="40sp" />

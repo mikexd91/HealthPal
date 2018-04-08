@@ -266,7 +266,7 @@ public class MapFragment extends Fragment implements GoogleApiClient.ConnectionC
         //move map camera
         mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(16));
-        Toast.makeText(getActivity(),"Your Current Location", Toast.LENGTH_LONG).show();
+//        Toast.makeText(getActivity(),"Your Current Location", Toast.LENGTH_LONG).show();
 
         Log.d("onLocationChanged", String.format("latitude:%.3f longitude:%.3f",latitude,longitude));
 

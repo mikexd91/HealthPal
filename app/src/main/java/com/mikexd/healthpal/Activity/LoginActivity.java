@@ -28,9 +28,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
+import com.facebook.CallbackManager;
+import com.facebook.FacebookCallback;
+import com.facebook.FacebookException;
+import com.facebook.login.LoginResult;
+import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -38,11 +46,11 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.mikexd.healthpal.R;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import static android.Manifest.permission.READ_CONTACTS;
 import static com.mikexd.healthpal.Activity.SignUpActivity.MY_SHAREDPREF_NAME1;
-
 /**
  * A login screen that offers login via email/password.
  */
@@ -64,11 +72,14 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private static final String TAG = "LoginActivity";
+    private static final String EMAIL = "email";
+    private CallbackManager callbackManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.editTextEmail);
         populateAutoComplete();
@@ -90,24 +101,91 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         });
         mProgressView = findViewById(R.id.login_progress);
         mProgressView.setVisibility(View.GONE);
-        mAuth = FirebaseAuth.getInstance();
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    // User is signed in
-                    //myRef.setValue("Hello, World!");
-                    Log.d(TAG, "onAuthStateChanged:signed_in:" + user.getUid());
-                } else {
-                    // User is signed out
-                    Log.d(TAG, "onAuthStateChanged:signed_out");
-                }
-                // ...
-            }
-        };
 
+        mAuth = FirebaseAuth.getInstance();
+
+
+        callbackManager = CallbackManager.Factory.create();
+        LoginButton loginButton = (LoginButton) findViewById(R.id.facebook_login);
+        loginButton.setReadPermissions(Arrays.asList("public_profile", "email"));
+        // If you are using in a fragment, call loginButton.setFragment(this);
+
+        // Callback registration
+        loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+            @Override
+            public void onSuccess(LoginResult loginResult) {
+                mProgressView.setVisibility(View.VISIBLE);
+                handleFacebookAccessToken(loginResult.getAccessToken());
+            }
+
+            @Override
+            public void onCancel() {
+                // App code
+                Toast.makeText(LoginActivity.this, "Authentification cancel.",
+                        Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onError(FacebookException exception) {
+                // App code
+                Toast.makeText(LoginActivity.this, "Authentification error.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
     }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if(currentUser != null){
+            updateUI();
+        }
+    }
+
+    public void updateUI() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+        if (user != null) {
+            // Name, email address, and profile photo Url
+            database = FirebaseDatabase.getInstance();
+            myRef = database.getReference().child("users").child(user.getUid());
+            myRef.child("name").setValue(user.getDisplayName());
+            myRef.child("userId").setValue(user.getUid());
+            myRef.child("userEmail").setValue(user.getEmail());
+        }
+        Intent i = new Intent(LoginActivity.this, MainActivity.class);
+        startActivity(i);
+        overridePendingTransition(R.anim.slide_from_right, R.anim.slide_to_left);
+        finish();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
+    public void handleFacebookAccessToken(AccessToken token){
+
+        final AuthCredential credential = FacebookAuthProvider.getCredential(token.getToken());
+        mAuth.signInWithCredential(credential)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if(!task.isSuccessful()){
+                            Toast.makeText(LoginActivity.this, "Authentification failed.",
+                                    Toast.LENGTH_SHORT).show();
+                        }else{
+                            updateUI();
+                            SharedPreferences.Editor editor = getSharedPreferences(MY_SHAREDPREF_NAME1,MODE_PRIVATE).edit();
+                            editor.putBoolean("loginFacebook", true);
+                            editor.commit();
+                        }
+                    }
+                });
+    }
+
+
 
     public void onClick_SignUp(){
         Intent myIntent = new Intent(this, SignUpActivity.class);
@@ -216,10 +294,11 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
                                         Toast.LENGTH_SHORT).show();
                             }else{
                                 mProgressView.setVisibility(View.VISIBLE);
-//                                SharedPreferences.Editor editor = getSharedPreferences(MY_SHAREDPREF_NAME1,MODE_PRIVATE).edit();
-//                                editor.putString("email",email);
-//                                editor.putString("password",password);
-//                                editor.commit();
+                                SharedPreferences.Editor editor = getSharedPreferences(MY_SHAREDPREF_NAME1,MODE_PRIVATE).edit();
+                                editor.putString("email",email);
+                                editor.putString("password",password);
+                                editor.putBoolean("loginFacebook",false);
+                                editor.commit();
                                 SharedPreferences prefs = getSharedPreferences(MY_SHAREDPREF_NAME1,MODE_PRIVATE);
 
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

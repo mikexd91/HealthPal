@@ -39,6 +39,7 @@
             android:inputType="textShortMessage"
             android:paddingLeft="10dp"
             android:text="bjnjnkmkm"
+            android:textColor="@color/black"
             tools:text="b jbnjn" />
 
        <!--<Button android:id="@+id/btn_send"-->
@@ -59,8 +60,7 @@
             android:elevation="0dp"
             android:paddingLeft="10dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/telegram" />
-
+            android:src="@drawable/send" />
 
     </LinearLayout>
 

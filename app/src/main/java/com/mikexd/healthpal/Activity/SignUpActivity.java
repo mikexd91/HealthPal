@@ -253,19 +253,6 @@ public class SignUpActivity extends AppCompatActivity implements LoaderCallbacks
                                     myRef.child("userId").setValue(user.getUid());
                                     myRef.child("userEmail").setValue(email);
 
-//                                    UserProfileChangeRequest profileUpdates = new UserProfileChangeRequest.Builder()
-//                                            .setDisplayName(name).build();
-//                                    user.updateProfile(profileUpdates);
-//
-//                                    String name = user.getDisplayName();
-//                                    String email = user.getEmail();
-//                                    Uri photoUrl = user.getPhotoUrl();
-
-//                                    Toast.makeText(SignUpActivity.this, name,
-//                                            Toast.LENGTH_SHORT).show();
-                                    // The user's ID, unique to the Firebase project. Do NOT use this value to
-                                    // authenticate with your backend server, if you have one. Use
-                                    // FirebaseUser.getToken() instead.
                                     String uid = user.getUid();
 
                                     Intent i = new Intent(SignUpActivity.this, MainActivity.class);
