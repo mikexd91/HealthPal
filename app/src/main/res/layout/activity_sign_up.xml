@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_margin="30dp"
     android:orientation="vertical"
-    tools:context="com.mikexd.healthpal.SignUpActivity"
+    tools:context="com.mikexd.healthpal.Activity.SignUpActivity"
     android:weightSum="1">
 
     <ProgressBar

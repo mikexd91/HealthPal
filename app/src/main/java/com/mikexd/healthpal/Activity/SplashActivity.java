@@ -1,4 +1,4 @@
-package com.mikexd.healthpal;
+package com.mikexd.healthpal.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -13,8 +13,6 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
-import static com.mikexd.healthpal.SignUpActivity.MY_SHAREDPREF_NAME1;
-
 public class SplashActivity extends AppCompatActivity {
 
     private FirebaseAuth mAuth;
@@ -25,7 +23,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         mAuth = FirebaseAuth.getInstance();
-        SharedPreferences prefs = getSharedPreferences(MY_SHAREDPREF_NAME1,MODE_PRIVATE);
+        SharedPreferences prefs = getSharedPreferences(SignUpActivity.MY_SHAREDPREF_NAME1,MODE_PRIVATE);
         final String name = prefs.getString("name", null);
         String email = prefs.getString("email", null);
         String password = prefs.getString("password", null);

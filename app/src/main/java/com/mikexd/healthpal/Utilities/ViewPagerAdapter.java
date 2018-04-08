@@ -1,4 +1,4 @@
-package com.mikexd.healthpal;
+package com.mikexd.healthpal.Utilities;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;

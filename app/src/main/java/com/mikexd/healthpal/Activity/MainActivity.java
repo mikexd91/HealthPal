@@ -1,4 +1,4 @@
-package com.mikexd.healthpal;
+package com.mikexd.healthpal.Activity;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,8 +18,13 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.mikexd.healthpal.Utilities.ViewPagerAdapter;
+import com.mikexd.healthpal.Fragment.ChatFragment;
+import com.mikexd.healthpal.Fragment.MapFragment;
+import com.mikexd.healthpal.Fragment.ProfileFragment;
+import com.mikexd.healthpal.R;
 
-import static com.mikexd.healthpal.SignUpActivity.MY_SHAREDPREF_NAME1;
+import static com.mikexd.healthpal.Activity.SignUpActivity.MY_SHAREDPREF_NAME1;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -132,6 +137,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         setupViewPager(viewPager);
+
     }
 
     private void setupViewPager(ViewPager viewPager) {
