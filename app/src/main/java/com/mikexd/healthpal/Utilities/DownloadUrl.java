@@ -41,11 +41,11 @@ public class DownloadUrl {
             }
 
             data = sb.toString();
-            Log.d("downloadUrl", data.toString());
+//            Log.d("downloadUrl", data.toString());
             br.close();
 
         } catch (Exception e) {
-            Log.d("Exception", e.toString());
+//            Log.d("Exception", e.toString());
         } finally {
             iStream.close();
             urlConnection.disconnect();

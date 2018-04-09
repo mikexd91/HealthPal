@@ -71,8 +71,6 @@ public class MainActivity extends AppCompatActivity {
                             SharedPreferences.Editor editor = getSharedPreferences(MY_SHAREDPREF_NAME1,MODE_PRIVATE).edit();
                             editor.putString("name",dataSnapshot.getValue().toString());
                             editor.commit();
-
-//                            }
                         }
 
                         @Override

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +73,6 @@ public class MasonryAdapter extends RecyclerView.Adapter<MasonryAdapter.MasonryV
 
         public void randomColor(){
             RandomColor randomColor = new RandomColor();
-//            int color = randomColor.randomColor();
             int[] color = randomColor.random(RandomColor.Color.PINK, 18);
             int[] colorz = randomColor.random(RandomColor.Color.ORANGE, 18);
             int[] both = (int[]) ArrayUtils.addAll(color, colorz);
@@ -85,7 +83,7 @@ public class MasonryAdapter extends RecyclerView.Adapter<MasonryAdapter.MasonryV
 
         @Override
         public void onClick(View v) {
-            Log.d("mula", "onClick " + getPosition() + " " + textView.getText().toString());
+//            Log.d("mula", "onClick " + getPosition() + " " + textView.getText().toString());
             Intent i = new Intent(context, DetailedSickActivity.class);
             i.putExtra("id", sick.getID());
             i.putExtra("sick",sick.getIssue());

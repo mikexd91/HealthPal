@@ -76,11 +76,6 @@ public class MessageListAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
             super(view);
             message = (TextView) itemView.findViewById(R.id.message);
 
-            //TODO: Uncomment this if you want to use a custom Font
-            /*String customFont = "Montserrat-Regular.ttf";
-            Typeface typeface = Typeface.createFromAsset(itemView.getContext().getAssets(), customFont);
-            message.setTypeface(typeface);*/
-
         }
     }
 

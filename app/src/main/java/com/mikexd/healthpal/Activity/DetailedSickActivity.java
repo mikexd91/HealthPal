@@ -92,7 +92,7 @@ public class DetailedSickActivity extends AppCompatActivity {
                 possibleSymptoms = json.getString("PossibleSymptoms");
                 TreatmentDescription = json.getString("TreatmentDescription");
 
-                Log.d("Sickness", ": " + name);
+//                Log.d("Sickness", ": " + name);
 
                 nameView = findViewById(R.id.name);
                 descriptionView = findViewById(R.id.descriotion);

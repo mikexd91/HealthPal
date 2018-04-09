@@ -24,6 +24,7 @@
         tools:visibility="gone" />
 
     <ScrollView
+        android:scrollbars="none"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <LinearLayout
@@ -31,14 +32,12 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <!-- Here you can put your logo or brand name -->
-
             <ImageView
                 android:layout_width="240dp"
                 android:layout_height="120dp"
                 android:layout_gravity="center_horizontal"
                 android:padding="16dp"
-                android:layout_marginTop="48dp"
+                android:layout_marginTop="40dp"
                 android:tint="@android:color/white"
                 android:src="@drawable/ic_favorite_black_24dp"/>
 
@@ -56,7 +55,7 @@
                 android:maxLines="1"
                 android:drawableTint="@android:color/white"
                 android:drawableLeft="@drawable/ic_email_black_24dp"
-                android:layout_marginTop="70dp"/>
+                android:layout_marginTop="45dp"/>
 
             <View
                 android:layout_width="match_parent"
@@ -125,7 +124,7 @@
                 android:layout_height="80dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="50dp"
-                android:layout_marginBottom="30dp" />
+                android:layout_marginBottom="20dp" />
 
         </LinearLayout>
     </ScrollView>

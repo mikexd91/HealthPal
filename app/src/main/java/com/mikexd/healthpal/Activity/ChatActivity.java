@@ -131,17 +131,6 @@ public class ChatActivity extends AppCompatActivity {
                         {
                             ArrayList responseList = (ArrayList) response.getOutput().get("text");
 
-//                            if(response.getIntents().size()>0){
-//                                String intent = response.getIntents().get(0).getIntent();
-//                                switch(intent){
-//                                    case "bodypain":
-//
-//                                }
-//                                if(intent.endsWith("bodypain")){
-//
-//                                }
-//                            }
-
                             if(null !=responseList && responseList.size()>0){
                                 outMessage.setMessage((String)responseList.get(0));
                                 outMessage.setId("2");
